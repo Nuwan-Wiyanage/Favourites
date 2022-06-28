@@ -5,10 +5,42 @@ const app = express(),
       port = 3080;
 
 // place holder for the data
+const products = [
+  { 
+    'id': 1,
+    'name': 'P1',
+    'description': 'This is Product 1'
+  }, 
+  {
+    'id': 2,
+    'name':'P2',
+    'description': 'This is Product 2'
+  }, 
+  {
+    'id': 3,
+    'name':'P3',
+    'description': 'This is Product 3'
+  }, 
+  {
+    'id': 4,
+    'name':'P4',
+    'description': 'This is Product 4'
+  }, 
+  {
+    'id': 5,
+    'name':'P5',
+    'description': 'This is Product 5'
+  }
+];
 const favourites = [{ 'name': 'xxx'}, {'name':'yyyy'}];
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend-app/out')));
+
+app.get('/backend-api/products', (req, res) => {
+  console.log('backend-api/products called!')
+  res.json(products);
+});
 
 app.get('/backend-api/favourites', (req, res) => {
   console.log('backend-api/favourites called!')
